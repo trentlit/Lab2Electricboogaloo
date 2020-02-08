@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<betEngine>
+    <BetRound>
+        <BetRoundNumber>1</BetRoundNumber>
+        <eBetRound>PREFLOP</eBetRound>
+        <PlayerPosition betPositionNbr="1">
+            <BettingStrategy>
+                <StrategyNbr>1</StrategyNbr>
+                <lstCardRank>JACK</lstCardRank>
+                <lstCardRank>JACK</lstCardRank>
+                <isSameSuit>false</isSameSuit>
+                <isSameRank>true</isSameRank>
+                <eBetCurrentAction>CHECK</eBetCurrentAction>
+                <BetAmount>
+                    <iBetMinPct>0.0</iBetMinPct>
+                    <iBetMaxPct>99.0</iBetMaxPct>
+                    <eBetType>POT</eBetType>
+                </BetAmount>
+            </BettingStrategy>
+        </PlayerPosition>
+    </BetRound>
+</betEngine>
