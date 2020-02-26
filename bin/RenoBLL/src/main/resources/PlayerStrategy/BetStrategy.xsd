@@ -1,0 +1,108 @@
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="betEngine">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BetRound">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="enum-eBetRound" name="eBetRound" />
+							<xs:element name="PlayerPosition">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BettingStrategy"
+											maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:byte" name="StrategyNbr" />
+													<xs:element type="enum-eHandStrength"
+														name="eHandStrength" minOccurs="0" maxOccurs="1" />
+													<xs:element type="xs:string" name="lstCardRank"
+														maxOccurs="unbounded" minOccurs="0" />
+													<xs:element type="xs:boolean" name="isSameSuit" />
+													<xs:element type="xs:boolean" name="isSameRank" />
+													<xs:element type="enum-eBetAction"
+														name="eBetCurrentAction" />
+													<xs:element name="BetAmount">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="iBetMinPct">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:float">
+
+																			<xs:minInclusive value="0">
+																			</xs:minInclusive>
+																			<xs:maxInclusive value="100">
+																			</xs:maxInclusive>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="iBetMaxPct">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:float">
+																			<xs:maxInclusive value="100">
+																			</xs:maxInclusive>
+																			<xs:minInclusive value="0">
+																			</xs:minInclusive>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element type="enum-eBetType"
+																	name="eBetType" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="betPositionNbr" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="enum-eBetRound">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PREFLOP" />
+			<xs:enumeration value="FLOP" />
+			<xs:enumeration value="TURN" />
+			<xs:enumeration value="RIVER" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="enum-eBetAction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CHECK" />
+			<xs:enumeration value="BET" />
+			<xs:enumeration value="PREFLOP" />
+			<xs:enumeration value="RAISE" />
+			<xs:enumeration value="FOLD" />
+			<xs:enumeration value="CALL" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="enum-eBetType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="POT" />
+			<xs:enumeration value="STAKE" />
+			<xs:enumeration value="NONE" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="enum-eHandStrength">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RoyalFlush" />
+			<xs:enumeration value="StraightFlush" />
+			<xs:enumeration value="FourOfAKind" />
+			<xs:enumeration value="FullHouse" />
+			<xs:enumeration value="Flush" />
+			<xs:enumeration value="Straight" />
+			<xs:enumeration value="ThreeOfAKind" />
+			<xs:enumeration value="TwoPair" />
+			<xs:enumeration value="Pair" />
+			<xs:enumeration value="HighCard" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
