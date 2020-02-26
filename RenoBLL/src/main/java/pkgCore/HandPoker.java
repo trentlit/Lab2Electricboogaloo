@@ -242,7 +242,10 @@ public class HandPoker extends Hand implements Comparable {
 	private boolean isRoyalFlush() {
 
 		boolean bIsRoyalFlush = false;
-		// TODO - Complete implementation for this method.
+		if (isStraightFlush()) {
+			
+		}
+		//TODO 
 		return bIsRoyalFlush;
 	}
 
@@ -255,7 +258,11 @@ public class HandPoker extends Hand implements Comparable {
 	 */
 	private boolean isStraightFlush() {
 		boolean bisStraightFlush = false;
-		// TODO - Complete implementation for this method.
+		
+		if ((isStraight()&&(isFlush())){
+			bisStraightFlush =true;
+			
+		// TODO - Double check 
 		return bisStraightFlush;
 	}
 
@@ -268,17 +275,19 @@ public class HandPoker extends Hand implements Comparable {
 	 */
 	private boolean isFourOfAKind() {
 		boolean bisFourOfAKind = false;
-		// TODO - Complete implementation for this method.
+		//TODO- Complete implementation for this method.
+		
+		}
 		return bisFourOfAKind;
 	}
-
+	
 	/**
 	 * @author BRG
 	 * @version Lab #2
 	 * @since Lab #2
 	 * @return 'true' if Hand is a Full House
 	 * 
-	 */
+	 *
 	private boolean isFullHouse() {
 		boolean bisFullHouse = false;
 		// TODO - Complete implementation for this method.
@@ -294,7 +303,25 @@ public class HandPoker extends Hand implements Comparable {
 	 */
 	private boolean isFlush() {
 		boolean bisFlush = false;
-		// TODO - Complete implementation for this method.
+		int iCnt=0;
+		for (eSuit eSuit : EnumSet.range(eSuit.HEARTS, eSuit.SPADES)) {
+			for(Card c: this.getCards()) {
+				if (c.geteSuit(==eSuit)) {
+					iCnt++;
+				}
+			}
+		if (iCnt==0)
+			continue;
+		else if (iCnt==5) {
+			bisFlush=true;
+			break;
+		}
+		else {
+			return false;
+		}
+		}
+		
+		// TODO - Double check 
 		return bisFlush;
 	}
 
@@ -306,8 +333,24 @@ public class HandPoker extends Hand implements Comparable {
 	 * 
 	 */
 	private boolean isStraight() {
-		boolean bisStraight = false;
-		// TODO - Complete implementation for this method.
+		boolean bisStraight = true;
+		
+		int i=0;
+		
+		if((this.getCards().get(0).geteRank().equals(eRank.ACE)) &&
+			if(this.getCards().get(1).geteRank().equals(eRank.FIVE))) {
+				i=1;
+			}
+		
+		for (; i< this.getCards().size()-1;i++) {
+			if ((this.getCards().get(i).geteRank().getiRankNbr()-1)!=
+					(this.getCards().get(i+1).geteRank().getiRankNubr())) {
+					bisStraight = false;
+					return bisStraight;
+			}
+			
+			}
+		
 		return bisStraight;
 	}
 
@@ -331,7 +374,7 @@ public class HandPoker extends Hand implements Comparable {
 			bisThreeOfAKind = true;
 		}
 		return bisThreeOfAKind;
-	}
+	} 
 
 	/**
 	 * @author BRG
