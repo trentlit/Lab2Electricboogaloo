@@ -243,9 +243,11 @@ public class HandPoker extends Hand implements Comparable {
 
 		boolean bIsRoyalFlush = false;
 		if (isStraightFlush()) {
-			
+			if (this.getCards().get(1).geteRank().equals(eRank.KING){
+				bIsRoyalFlush = true;
+			}
 		}
-		//TODO 
+		 
 		return bIsRoyalFlush;
 	}
 
